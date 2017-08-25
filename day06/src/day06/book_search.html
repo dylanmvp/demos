@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <style>
+    .container{
+       position:relative;
+    }
+    #suggest{
+      position:absolute;
+      list-style:none;
+      padding:0;
+      margin:0;
+      border:1px solid #aaa;
+      top:100%;
+      left:0;
+      width:230px;
+      display:none;
+    }
+    #suggest li{
+        line-height:2em;
+    }
+    #suggest li:hover{
+      background:#eee;
+    }
+  </style>
+</head>
+<body>
+<h1>搜索建议</h1>
+  <div class="container">
+     <input type="text" id="inputKw">
+     <ul id="suggest">
+<!--   <li>js大全</li>
+       <li>js指南</li> -->
+     </ul>
+  </div>
+
+  <script>
+    //1:获取输入input元素
+    //2:绑定事件 onkeyup
+    inputKw.onkeyup = function(){
+     //3:读取用户输入内容
+     var kw = this.value;
+     //4:判断如果用户没有输入，则隐藏建议列表
+     if(!kw){
+       suggest.style.display = "none";
+       return;//停止向后执行
+     }
+     //5:发送AJAX请求GET
+     var xhr = new XMLHttpRequest();
+     xhr.onreadystatechange = function(){
+      if(xhr.readyState===4&&xhr.status===200){
+       //6:接收返回数据保存 suggest内容
+       suggest.innerHTML = xhr.responseText;
+       //7:显示suggest元素     
+       suggest.style.display="block";
+      }
+     }
+     xhr.open("GET","book_search.php?kw="+kw,true);
+     xhr.send(null);
+    }
+  </script>
+</body>
+</html>

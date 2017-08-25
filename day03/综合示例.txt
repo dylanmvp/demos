@@ -1,0 +1,27 @@
+用户管理  11:30--11:50
+1:编写bbs.sql 创建数据库bbs
+  创建表 user(uid,uname,upwd,regtime 注册时间)
+模块一:添加用户   
+2:编写php:user_add.php
+  接收客户提交参数 uname,upwd 执行INSERT语句，
+  把上述信息添加数据库 返回"添加成功" 或"添加失败" 
+3:编写html:user_add.html
+  提交添加新用户表单，录入用户名和密码，点击
+  “提交”按钮，发送user_add.php,完成添加用户
+
+模块二:查询用户列表
+  编写php:user_select.php
+  将数据表user中所有记录查询抓取出来
+  并且按表格形式输出在网页上
+
+模块三:删除用户
+ :编写php:user_del.php
+  接收客户提交参数 uname 执行DELETE语句，
+  把上述信息添加数据库 返回"删除成功" 或"删除失败" 
+  DELETE FROM 表名 WHERE 条件;
+  DELETE FROM user WHERE uname='$t';
+
+ :编写html:user_del.html
+  提交添加用户表单，录入 用户名 点击
+  “提交”按钮，发送user_del.php,完成删除用户
+ 

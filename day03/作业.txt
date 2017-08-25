@@ -1,0 +1,17 @@
+1:编写sql文件ifeng.sql
+ 创建数据库ifeng
+ 创建表news(nid,title,content,pubtime)
+
+2:创建php news_add.php
+ $_REQUEST['title'];
+ $_REQUEST['content'];
+ 接收客户提交的参数 title/content 连接数据库，
+ 提交INSERT,输出添加成功或添加失败
+
+测试:浏览器地址栏
+直接访问php
+127.0.0.1/day03/news_add.php?title=hi&content=hi1
+
+3:创建html news_add.html
+ 包含一个表单，让用户输入要添加新闻标题与内容,
+ 点击"提交"按钮，把用户输入内容提交news_add.php

@@ -1,0 +1,50 @@
+#作业:9:35--9:45
+#1:删除数据库dangdang如果存在的话
+DROP DATABASE IF EXISTS dangdang;
+#2:创建数据库dangdang 指定编码utf8
+CREATE DATABASE dangdang CHARSET=UTF8;
+#3:进入dangdang库中
+USE dangdang;
+#4:创建图书类别表
+#dd_category(cid,cname,bookcount 该类别下图书数量)
+CREATE TABLE dd_category(
+  cid INT,
+  cname VARCHAR(50),
+  bookcount INT
+);
+#5:向图书类别表中添加三条记录
+   100  计算机类  3
+   200  历史类    1
+   300  美食类    2
+
+SET NAMES GBK;
+INSERT INTO dd_category VALUES(100,'计算机类',3);
+INSERT INTO dd_category VALUES(200,'历史类',1);
+INSERT INTO dd_category VALUES(300,'美食类',2);
+#6:创建图书表 
+dd_book(bid,bname,price,pubdate,cid)
+CREATE TABLE dd_book(
+ bid INT,
+ bname VARCHAR(20),
+ price DOUBLE(10,2),
+ pubdate DATETIME,
+ cid   INT
+);
+#7:向图书表中添加6条记录
+SET NAMES GBK;#临时修改操作指定编码为gbk
+INSERT INTO dd_book VALUES(1,'js权威指南',100,now(),100);
+INSERT INTO dd_book VALUES(2,'js大全',100,now(),100);
+INSERT INTO dd_book VALUES(3,'js指南',100,now(),100);
+INSERT INTO dd_book VALUES(4,'西游记',100,now(),200);
+INSERT INTO dd_book VALUES(5,'火锅',100,now(),300);
+INSERT INTO dd_book VALUES(6,'火锅2',100,now(),300);
+#8:删除图书编号为6的图书
+DELETE FROM dd_book WHERE bid=6;
+UPDATE dd_category SET bookcount = 1
+WHERE cid = 300;
+#9:查询出"计算机类"所有书籍
+多表查询三要素
+SELECT b.bid,b.bname,b.price
+FROM dd_category c,dd_book b
+WHERE c.cid = b.cid
+AND  c.cname = '计算机类';

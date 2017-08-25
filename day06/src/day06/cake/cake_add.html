@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>添加新闻</h1>
+  <h2 id="msg" style="color:red"></h2>
+  <form action="#">
+   名称 <input type="text" id="cname"> <br> 
+   价格 <input type="text" id="price"> <br> 
+   图片 <input type="text" id="pic"> <br> 
+   类别编号 <input type="text" id="tid"> <br> 
+   <input type="button" value="添加" id="btn"> <br>
+  </form>
+  <script>
+     btn.onclick = function(){
+       //1:获取用户输入值;
+       var n = cname.value;
+       var p = price.value;
+       var r = pic.value;
+       var t = tid.value;
+       //2:
+       var xhr = new XMLHttpRequest();
+       xhr.onreadystatechange = function(){
+          if(xhr.readyState===4&&xhr.status===200){
+            var html = xhr.responseText;
+            var obj = JSON.parse(html);
+            if(obj.code>0){
+              alert("添加成功"+obj.msg);
+            }else{
+              alert("添加失败"+obj.msg);
+            }
+          }
+       }
+       xhr.open("POST","cake_add.php",true);
+       xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+       xhr.send(`cname=${n}&price=${p}&pic=${r}&tid=${t}`);
+
+     }  
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+综合示例:
+   (1)编写SQL:数据库 huimaiche 表
+     car_type(tid,tname)        lt8 lt15 lt30 suv
+     car(cid,cname,price,pic,tid)  12车
+   (2)编写 php   car_add.php 获取参数[cname,price,pic,tid] 
+     添加到数据库并且返回结果 json 
+   (3)编写 html  car_add.html
+     创建表单 [cname,price,pic,tid] $.ajax();
+   (4)编写php    car_list.php 获取参数 [tid]
+     查询指定类别下所有汽车信息,json
+   (5) 编写 html  car_list.html
+     5.1:创建下拉列表<select id="tid">
+                     <option value="1">小于8万</option>
+                    </select>
+     5.2:<table>...
+   (6) 完成删除
+      car_del.php
+   (7) 显示详细信息
+      js获取参数 : location.search  "?cid=10"
+      car_detail.html
+      car_detail.php

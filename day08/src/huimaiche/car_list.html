@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>JQUERY 添加数据</h1>
+  <select id="tid">
+     <option value="1">8万以下</option>
+     <option value="2">15万以下</option>
+     <option value="3">30万以下</option>
+     <option value="4">suv</option>
+  </select>
+  <table border="1" width="90%">
+   <thead>
+   <tr>
+    <td>汽车图片</td>
+    <td>汽车价格</td>
+    <td>汽车名称</td>
+    <td>操作</td>
+   </tr>
+   </thead>
+   <tbody id="tb1">
+   
+   </tbody>
+  </table>
+<script src="jq.js"></script>
+<script>
+      $("#tid").change(function(){
+           var id = $(this).val();
+           page(id);
+      });
+      page(1);
+      function page(id){
+        //1:发送ajax请求 id
+        $.ajax({
+          type:"GET",
+          url:"car_list.php",
+          data:{tid:id},
+          success:function(data){
+              var html = "";
+              for(var i=0;i<data.length;i++){
+               var obj = data[i];
+               html += `
+                  <tr>
+                   <td><img src="img/${obj.pic}" /></td>
+                   <td>${obj.price}</td>
+                   <td>${obj.cname}</td>
+                   <td>
+                     <a href="${obj.cid}" class="btn-del">删除</a>
+                     <a href="car_detail.html?cid=${obj.cid}" class="btn-detail">详细信息</a>
+
+                   </td>
+                  </tr>
+               `;
+              }
+              $("#tb1").html(html);
+          }
+        });
+        //2:接收返回数据拼接字符串 tb1
+      }
+
+
+      //功能3：删除指定汽车
+      //1:为删除按钮绑定点击事件,代理
+      $("#tb1").on("click","a.btn-del",function(e){
+         //2:阻止事件默认行为
+         e.preventDefault();
+         //3:获取删除id
+         var cid = $(this).attr("href");
+         //4:发送AJAX请求
+         var tr = $(this).parent().parent();
+         $.ajax({
+           type:"GET",
+           url:"car_del.php",
+           data:{cid:cid},
+           success:function(data){
+              if(data.code>0){
+               tr.remove();
+              }
+           }
+         });
+
+      });
+
+</script>
+</body>
+</html>

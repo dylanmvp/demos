@@ -1,0 +1,43 @@
+#综合练习一:根据注释编写SQL 
+#1:删除库 lenovo 如果存在的话
+DROP DATABASE IF EXISTS lenovo;
+#2:创建库 lenovo 库编码UTF8
+CREATE DATABASE lenovo CHARSET=utf8;
+#3:进入库 lenovo
+USE lenovo;
+#4:创建部门信息表 dept
+#  did编号  dname名称   empcount该部门下雇员人数
+CREATE TABLE dept(
+ did      INT,
+ dname    VARCHAR(20),
+ empcount INT
+);
+#5:插入三条记录
+#  10  account  2
+#  20  software 1
+#  30  manager  3
+INSERT INTO dept VALUES(10,'account',2);
+INSERT INTO dept VALUES(20,'software',1);
+INSERT INTO dept VALUES(30,'manager',3);
+
+#6:创建员工信息表 emp
+#  (eid,ename,sex,salary,bdate,did 所属部门编号)
+CREATE TABLE emp(
+ eid    INT,
+ ename  VARCHAR(20),
+ sex    VARCHAR(1),
+ salary DOUBLE(10,2),
+ bdate  DATETIME,
+ did    INT
+);
+#7:添加六条记录
+INSERT INTO emp VALUES(1,'tom1','F',19001,'1999-10-10',10);
+INSERT INTO emp VALUES(2,'tom2','F',19002,'1999-10-10',10);
+INSERT INTO emp VALUES(3,'tom3','F',19003,'1999-10-10',20);
+INSERT INTO emp VALUES(4,'tom4','M',19004,'1999-10-10',30);
+INSERT INTO emp VALUES(5,'tom5','F',19005,'1999-10-10',30);
+INSERT INTO emp VALUES(6,'tom6','F',19006,'1999-10-10',30);
+#8:删除一个员工记录
+DELETE FROM emp WHERE eid=6;
+#9:更新对应部门中人数
+UPDATE dept SET empcount=2 WHERE did=30;

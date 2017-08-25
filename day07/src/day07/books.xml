@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<booklist>
+  <book>
+    <id>1001</id>
+	<name>js大全</name>
+	<price>100</price>
+  </book>
+  <book>
+    <id>1002</id>
+	<name>js指南</name>
+	<price>100</price>
+  </book>
+  <book>
+    <id>1002</id>
+	<name>js专家指南</name>
+	<price>100</price> 
+  </book>
+</booklist>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>JQUERY 添加数据</h1>
+<form action="#">
+     汽车名称 <input type="text" id="cname"> <br>
+     汽车价格 <input type="text" id="price"> <br>
+     汽车图片 <input type="text" id="pic"> <br>
+     汽车类别编号 <input type="text" id="tid"> <br>
+  <input type="button" id="btn" value="add"> <br>
+</form>
+<script src="jq.js"></script>
+<script>
+    //1:获取按钮绑定点击事件
+    $("#btn").click(function(){
+     //2:获取四个参数
+     var n = cname.value;
+     var r = price.value; 
+     var p = pic.value; 
+     var t = tid.value; 
+    //3:发送 ajax请求  $.ajax();
+    //4:判断是否添加成功 16:36--16:41   
+     $.ajax({
+       url:"car_add.php",
+       data:{cname:n,price:r,pic:p,tid:t},
+       success:function(data){
+           if(data.code>0){
+             alert(data.msg)
+           }else{
+             alert(data.msg);
+           }
+       }
+     });//ajax
+    });//click
+
+</script>
+</body>
+</html>

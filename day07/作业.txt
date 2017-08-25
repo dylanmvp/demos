@@ -1,0 +1,16 @@
+综合示例:味多美
+  功能要求
+  (1) 编写sql文件,创建数据库 weiduomei 创建表
+     caketype 蛋糕类别	(tid,tname)
+     cake     蛋糕   	(cid,cname,price,pic,tid)
+     caketype[巧克力/水果/芝士]
+     cake    7块
+  (2) cake_add.php 接收客户端提交cname,price,pic,tid
+     向数据库cake表添加一条记录，返回值json
+     echo '{"code":1,"msg":"添加成功"}';
+  (3) cake_add.html
+     创建表单 cname,price,pic,tid 发送POST AJAX请求
+     将数据库发送cake_add.php 并且接收返回数据
+  (4)cake_select.php  获取客户端指定蛋糕类别编号查询该类别下所有蛋糕列表
+  (5)cake_select.html 显示指定类别下蛋糕列表
+  (6)cake_del.php   接收客户端提交cid删除指定蛋糕

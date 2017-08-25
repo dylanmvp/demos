@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1 id="msg" style="color:red;">用户登录</h1>
+<form action="#"> 
+    用户名<input type="text"  id="uname" />
+    <br>
+    密码<input type="password"  id="upwd" />
+    <br>
+    <input type="button" id="btn" value="登录" />
+</form>
+<script> 
+    //1:获取登录按钮
+    //2:为按钮绑定点击事件
+    btn.onclick = function(){
+     //3:获取用户名，密码
+     var u = uname.value;
+     var p = upwd.value;
+     //4:发送AJAX
+     var xhr = new XMLHttpRequest();
+     xhr.onreadystatechange = function(){
+       if(xhr.readyState===4&&xhr.status===200){
+           var html = xhr.responseText;
+           msg.innerHTML = html;
+       }
+     }
+     xhr.open("GET","login.php?uname="+u+"&upwd="+p,true);
+     xhr.send(null);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+
+</head>
+<body>
+<h1>蛋糕类别列表</h1>
+<select id="menu">
+   <option value="1">--请选择--</option>
+   <option value="1">巧克力</option>
+   <option value="2">水果</option>
+   <option value="3">芝士</option>
+</select>
+<table border="1" width="90%">
+  <thead>
+    <tr>
+      <td>蛋糕图片</td>
+      <td>蛋糕名称</td>
+      <td>蛋糕价格</td>
+      <td>操作</td>
+    </tr>
+  </thead> 
+  <tbody id="tb1">
+      
+  </tbody>
+</table>
+<script>
+   //1:获取下拉列表 menu
+   //2:绑定事件 onchange
+  menu.onchange = function(){
+   //3:获取当前类别 id
+   var tid = this.value;
+   //4:创建AJAX发送
+   var xhr = new XMLHttpRequest();
+   xhr.onreadystatechange = function(){
+     if(xhr.readyState===4&&xhr.status===200){
+       var json = xhr.responseText;
+       var obj = JSON.parse(json);
+       
+       var html = "";
+       for(var i=0;i<obj.length;i++){
+         var o = obj[i];
+         html += `
+          <tr>
+           <td><img src="img/${o.pic}" width="120" height="120" /></td>
+           <td>${o.cname}</td>
+           <td>${o.price}</td>
+           <td><a href="${o.cid}" class="btn-del">删除</a></td>
+          </tr>   
+         `;
+       }
+       tb1.innerHTML = html;
+     }
+   }
+   xhr.open("GET","cake_select.php?tid="+tid,true);
+   xhr.send(null);
+  }
+
+
+
+  //为删除按钮绑定点击事件
+  //由于 a 动态添加必须使用事件冒泡或者事件代理
+  //才能正确绑定事件
+  //1:获取父元素 tb1
+  //2:为其绑定点击事件
+  tb1.onclick = function(e){
+   e.preventDefault();
+   //3:获取目标对象
+   var target = e.target;
+   //4:是否是超链接
+   if(target.className==="btn-del"){
+    var rs = window.confirm("是否删除");
+    if(rs==false){return;}
+
+
+    var tr =  target.parentNode.parentNode; 
+    //5:!!!如果当前元素是超链接 阻止默行为
+    //6:获取删除蛋糕编号
+    var cid = target.getAttribute("href");
+    //7:发送AJAX  10:40--10"50
+    //8:如果执行成功删除当前行 a>td>tr
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+       if(xhr.readyState===4&&xhr.status===200){
+           tb1.removeChild(tr);
+       }
+    }
+    xhr.open("GET","cake_del.php?cid="+cid,true);
+    xhr.send(null);
+   }
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+作业:
+  1:创建表news在sohu库中
+   (nid,title,content,pubtime发布时间,viewcount 浏览次数)
+  2:添加10条记录
+  3:编写 php   news_add.php 获取用户提交参数 title/content
+    添加至数据库news表,并且返回"添加新闻成功" "添加新闻失败
+  4:编写 html  news_add.html
+    创建表单，用户输入新闻标题与内容，点击"添加"按钮发送AJAX将标题和内容发送news_add.php 并接收返回信息
+  5:编写 php    news_select.php  
+  6:编写 html  news_select.html 页面加载成功发送ajax请求news_select.php  

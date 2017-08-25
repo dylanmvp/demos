@@ -1,0 +1,12 @@
+综合练习:微信留言
+*1:进入jd库中创建一个留言表 
+CREATE TABLE msg(
+  mid INT PRIMARY KEY AUTO_INCREMENT,
+  content VARCHAR(200),
+  uid INT
+);
+INSERT INTO msg VALUES(null,'hi1',1);
+INSERT INTO msg VALUES(null,'hi2',1);
+INSERT INTO msg VALUES(null,'hi3',1);
+*2:htdocs/msg.html  
+*3:htdocs/msg_do.php

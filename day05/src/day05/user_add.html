@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>AJAX  添加用户</h1>
+<form action="#" method="post">
+    用户名<input type="text" id="uname"/> 
+    密码<input type="text" id="upwd"/> 
+    <input type="button" id="btn1" value="添加" />
+</form>
+<script>
+  //区别
+  //1:表单不同
+  //  (1) action="#"
+  //  (2) submit="button"
+  //  (3) name-->id
+  //2:发送请求接收服务器响应 
+  //1:获取添加按钮 
+  //2:为其绑定点击事件
+  btn1.onclick = function(){
+    //3:四步 AJAX
+    var u = uname.value;
+    var p = upwd.value;
+    //a:创建对象AJAX
+    var xhr = new XMLHttpRequest();
+    //b:绑定事件
+    xhr.onreadystatechange = function(){
+       alert(xhr.responseText);
+    }
+    //c:打开连接
+    xhr.open("GET","user_add.php?uname="+u+"&upwd="+p,true);
+    //d:发送请求
+    xhr.send(null);
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>JQUERY 添加数据</h1>
+<script src="jq.js"></script>
+<script>
+//1:地址栏访问html;
+//http://127.0.0.1/day08/05_corss.html
+
+//2:ajax
+//http://localhost/day08/05_corss.php
+//跨域
+$.ajax({
+  url:"http://localhost/day08/05_corss.php",
+  success:function(data){
+    console.log(data);
+  }
+});
+
+//默认跨域错误
+//XMLHttpRequest cannot load //http://localhost/day08/05_corss.php. No //'Access-Control-Allow-Origin' 
+//header is present on //the requested resource. //Origin 'http://127.0.0.1' //is 
+//therefore not allowed access.
+
+//跨域:
+//file:///C:/xampp/htdocs/day08/05_corss.html
+//http://
+</script>
+</body>
+</html>

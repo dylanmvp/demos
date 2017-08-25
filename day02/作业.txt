@@ -1,0 +1,46 @@
+#作业:
+#1:删除数据库jd如果存在的话
+DROP DATABASE IF EXISTS jd;
+#2:创建数据库jd 指定编码utf8
+CREATE DATABASE jd CHARSET=UTF8;
+#3:进入jd库中
+USE jd;
+#4:创建用户表 user (uid编号/uname用户名/upwd密码)
+CREATE TABLE user(
+  uid   INT,
+  uname VARCHAR(20),
+  upwd  VARCHAR(32)
+);
+#5:向用户表添加3条记录
+INSERT INTO user VALUES(1,'tom','123');
+INSERT INTO user VALUES(2,'jerry','123');
+INSERT INTO user VALUES(3,'james','123');
+#6:创建用户评论表 review(cid编号,title标题,
+#pubtime发布时间,uid用户编号)
+CREATE TABLE review(
+  cid     INT,
+  title   VARCHAR(50),
+  pubtime DATETIME,
+  uid     INT
+);
+#7:为每个用户添加三条记录
+INSERT INTO review VALUES(1,'hi1',now(),1);
+INSERT INTO review VALUES(2,'hi2',now(),1);
+INSERT INTO review VALUES(3,'hi3',now(),1);
+
+INSERT INTO review VALUES(4,'hi4',now(),2);
+INSERT INTO review VALUES(5,'hi5',now(),2);
+INSERT INTO review VALUES(6,'hi6',now(),2);
+
+INSERT INTO review VALUES(7,'hi7',now(),3);
+INSERT INTO review VALUES(8,'hi8',now(),3);
+INSERT INTO review VALUES(9,'hi9',now(),3);
+#8:查询所的用户信息
+SELECT * FROM user;
+#9:查询所有评论信息
+SELECT * FROM review;
+#10:查询用户编号为1所有评论 
+SELECT * FROM review WHERE uid=1;
+#11:删除用户编号为2并且删除其所有评论
+DELETE FROM user WHERE uid=2;
+DELETE FROM review WHERE  uid=2;

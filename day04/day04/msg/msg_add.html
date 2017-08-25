@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>添加留言</h1>
+   <form action="msg_add.php" method="post" id="f1">
+     用户名 <input type="text" name="uname" id="uname"/> 
+      <span>3~8位字符数字</span>
+     <br>
+     内容 <input type="text" name="content" id="content"/> 
+      <span>3~8位字符数字</span>
+     <br>
+     邮件 <input type="text" name="email" id="email"/> 
+     <br>
+      <input type="submit" value="save" /> <br>
+   </form>
+   <script>
+      //知识介绍
+      //1:表单元素事件  onsubmit
+      //2:onsubmit 事件触发条件 点击submit
+      //3:事件处理函数return true  正常提交
+      //4:                   false 禁止提交
+
+
+
+      //1:获取表单元素绑定事件 onsubmit
+      f1.onsubmit = function(){
+       console.log(1);
+       //2:获取用户/内容/邮件
+       var u = uname.value;
+       var c = content.value;
+       var e = email.value;
+       console.log(2+":"+u+c+e);
+       //3:创建三个正则表达式
+       var ur = /^[a-z0-9]{3,8}$/i;
+       var cr = /^[a-z0-9]{3,8}$/i;
+       var er = /[a-z0-9]{1,}@[a-z0-9]{1,}/i;
+       //4:验证 出错 提交  return false;
+       if(!ur.test(u)){
+         alert("用户名格式不正确");
+         return false;
+       }
+       if(!cr.test(c)){
+         alert("内容格式不正确");
+         return false;
+       }
+       if(!er.test(e)){
+         alert("邮件格式不正确");
+         return false;
+       }
+       //5:全验证成功      return true;
+       return true;
+      }
+   </script>
+
+</body>
+</html>

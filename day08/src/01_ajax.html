@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>JQUERY 添加数据</h1>
+<ul id="menu">
+</ul>
+<script src="jq.js"></script>
+<script>
+   //1:$.get();
+   //功能:发送ajax请求，请求方式GET
+   //获取不同数据格式自动转换功能 JSON.parse();
+    //$.get(url,data,fn);
+    //fn:回调方法: ajax执行完成自动调用方法
+    $.get("02_ajax.php",{id:3},function(data){
+        console.log(data.code);
+    });
+   //功能:发送ajax请求，请求方式GET
+   //2:$.post(url,data,fn);
+    $.post("02_ajax.php",{id:4},function(data){
+       console.log(data.code);      
+    });
+   //功能:发送AJAX请求，接收数据必须提text/html
+   //会将服务器返回结果(html)
+   //作为子元素添加至选择器元素中
+   //3:$("父选择器").load(url,data);
+   $("#menu").load("03_menu.php"); 
+   
+   //$.getJSON();
+   //$.getScript();
+</script>
+</body>
+</html>

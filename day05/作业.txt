@@ -1,0 +1,41 @@
+(6)编写  user_select.php
+(7)编写  user_del.php
+
+扩展作业:上传头像
+baidu [php 上传文件]
+
+http://www.runoob.com/php/php-file-upload.html
+http://www.w3school.com.cn/php/php_file_upload.asp
+
+
+
+
+上传文件
+ 1:上传头像
+ 2:上传附件
+ 3:上传音频文件 
+ 4:上传视频文件
+工作原理:
+ 客户端将一个文件发送服务器端某个文件夹下
+ 通常将文件名保存数据库
+
+开发流程  10:40--10:50
+1:在htdocs/day05/创建目录 upload
+2:创建 upload.html  发送文件
+  <form action="upload.php" enctype="multipart/form-data">
+    <input type="file" name="myFile" /> 
+    <input type="submit" value="上传" />
+  </form>
+  注意:
+  1:<input type="file"> 文件输入域
+  2:<form enctype="multipart/form-data">
+
+3:创建 upload.php   接收文件
+  1:判断文件上传类型 jpg/gif/png/jpeg
+  2:判断文件大小:    2000KB
+  3:上传临文件移动  upload
+
+
+
+
+

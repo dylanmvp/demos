@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>jsonp 跨域请求</h1>
+<button id="bt">使用JSONP解决浏览器跨域请求</button>
+<script>
+  bt.onclick = function(){
+    //1:创建script标签
+    var s = document.createElement("script");
+    //2:设置异步请求
+    s.async = true;
+    //3:设置src 跨域地址
+    s.src = "http://localhost/day08/06_json.php";
+    //4:把script保存head最后一个子元素
+    //发送异步请求--->
+    document.head.appendChild(s);
+  }//11:54--11:56
+  function doResponse(data){
+   console.log("客户端开始处理响应数据");
+   console.log(data);
+  }
+</script>
+</body>
+</html>

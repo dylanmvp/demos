@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>国际化 i18n</h1>
+  <script>
+    //11:40--11:45
+    //1:页面加载完成后自动发送ajax请求
+    //2:接收返回数 eval() 执行
+    window.onload = function(){
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState===4&&xhr.status===200){
+            var html = xhr.responseText;
+            eval(html);
+        }
+      }
+      xhr.open("GET","01_i18n.php",true);
+      xhr.send(null);
+    }
+  </script>
+</body>
+</html>

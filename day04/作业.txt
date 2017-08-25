@@ -1,0 +1,11 @@
+开发流程
+1)创建sql文件  tarena.sql 
+ 创建库 tarena 编码 utf8
+ 创建表 msg    留言表  
+ 编号/姓名/内容/邮件/发表留言时间
+2)创建  msg_add.php
+3)创建  msg_add.html   [姓名/内容/邮件]
+4)查询  msg_select.php  <span>X</span>
+5)删除  msg_del.php
+要求:点击"X",先弹出一个确认框，"您确认要删除吗?"
+如果用户点击"是"删除留言

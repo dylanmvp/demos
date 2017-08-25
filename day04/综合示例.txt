@@ -1,0 +1,21 @@
+#9:35--9:40
+#1:创建库 oa
+CREATE DATABASE oa CHARSET=UTF8;
+#2:进入   oa库中
+USE oa;
+#3:创建表 emp 雇员表
+#  (eid编号 主键自增/ename名称/salary薪水)
+CREATE TABLE emp(
+  eid   INT PRIMARY KEY AUTO_INCREMENT,
+  ename VARCHAR(20),
+  salary DOUBLE(10,2)
+);
+#4:添加3条记录
+INSERT INTO emp VALUES(null,'tom',10001.00);
+INSERT INTO emp VALUES(null,'jerry',8001.00);
+INSERT INTO emp VALUES(null,'james',8000.00);
+#5:查询薪水大于9000元所有雇员
+SELECT * FROM emp WHERE salary > 9000;
+#6:更新薪水增15%，条件编号大于1
+UPDATE emp SET salary=salary*1.15 
+WHERE eid > 1;

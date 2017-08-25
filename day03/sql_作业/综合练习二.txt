@@ -1,0 +1,53 @@
+#综合练习二:根据注释编写SQL 17:00--17:10
+#1:查询所有部门记录
+SELECT * FROM dept;
+#2:查询所有员工记录
+SELECT * FROM emp;
+#3:查询出10号部门所有员工记录
+SELECT * FROM emp WHERE did = 10;
+#4:查询出10号部门所有员工数量
+SELECT count(eid) FROM emp WHERE did = 10;
+#5:查询出10号部门所有员工工资总和
+SELECT sum(salary) FROM emp WHERE did = 10;
+#6:查询出员工姓名等于tom1工资和出生日期
+SELECT salary,bdate FROM emp WHERE ename='tom1';
+#7:查询员工工资高于19000员工记录
+SELECT * FROM emp WHERE salary>19000;
+#8:查询'account'部门所有员工信息
+#10
+SELECT did FROM dept WHERE dname='account';
+SELECT * FROM emp WHERE did = 10;
+#子查询
+SELECT * FROM emp WHERE did =
+(SELECT did FROM dept WHERE dname='account');
+#9:查询'account'部门平均工资
+SELECT avg(salary) FROM emp WHERE did =
+(SELECT did FROM dept WHERE dname='account');
+#10:查询姓名以t开头员工记录
+%:匹配0个或多个字符
+SELECT * FROM emp WHERE ename LIKE 't%';
+
+#11:查询雇员姓名，雇员工资，所在部门名称
+查询内在二张表,多表查询->解决方式套路
+a:将所在查询表放在FROM后面以逗号分隔
+  FROM emp,dept
+b:给每张表起一个别名
+  FROM emp e,dept d
+c:查找二张表有没有哪个有关系 = < > 
+  WHERE e.did = d.did;
+
+  SELECT e.ename,e.salary,d.dname
+  FROM emp e,dept d
+  WHERE e.did = d.did;
+#12:查询雇员编号，雇员名称，雇员薪水，部门名称
+  SELECT e.eid,e.ename,e.salary,d.dname
+  FROM emp e,dept d
+  WHERE e.did = d.did;
+
+#13:查询雇员前二个雇员
+ SELECT * FROM emp LIMIT m,n;
+ m: 查询从第m行开始(0开始计算)
+ n: 查询n行记录
+ SELECT * FROM emp LIMIT 0,2;
+ SELECT * FROM emp LIMIT 2,2;
+
